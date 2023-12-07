@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Othello thank you FXML file:
+    - This FXML file defines the layout for the thank you scene in the Othello game application.
+    - It displays a message of appreciation to the player.
+    - The layout includes background images, a medal icon, a thank you message, and an image of cute animals.
+    Author: Dinh Thuy Nhat Vy
+    Created on: 12/07/2023
+-->
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="thankYou" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <!--Main container for the thank you view-->
+    <children>
+        <!--Background image-->
+        <ImageView fitHeight="720.0" fitWidth="1081.0">
+            <image>
+                <Image url="@/images/Wooden_Background.jpg"/>
+            </image>
+        </ImageView>
+        <!--Medal icon-->
+        <ImageView layoutX="37.0" layoutY="38.0" fitHeight="105.0" fitWidth="110.0">
+            <image>
+                <Image url="@/images/MaroonMedal_Icon.png"/>
+            </image>
+        </ImageView>
+        <!--Thank you text-->
+        <Text fill="white" layoutX="99.5" layoutY="253.5" strokeType="OUTSIDE" style="-fx-stroke-width: 2; -fx-stroke: black; -fx-font-smoothing-type: gray; -fx-font-family: 'MV Boli'; -fx-font-weight: bold" text="%offlinePlayingThankYou" textAlignment="CENTER" wrappingWidth="890.0">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Text>
+        <!--Cute animals image-->
+        <ImageView layoutX="265.0" layoutY="432.0" fitWidth="550.0" fitHeight="480.0" preserveRatio="true">
+            <image>
+                <Image url="@/images/CuteAnimals_Card.png"/>
+            </image>
+        </ImageView>
+    </children>
+</Pane>

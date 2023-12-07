@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"networking"},{"l":"networking.client"},{"l":"networking.exceptions"},{"l":"networking.server"},{"l":"othellogame.ai"},{"l":"othellogame.model"},{"l":"othellogame.ui"},{"l":"othellogame.ui.view"}];updateSearchResults();

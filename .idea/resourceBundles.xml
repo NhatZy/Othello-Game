@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ResourceBundleManager">
+    <file url="file://$PROJECT_DIR$/src/othellogame/ui/languages_de_DE.properties" />
+    <file url="file://$PROJECT_DIR$/src/othellogame/ui/languages_en_GB.properties" />
+    <file url="file://$PROJECT_DIR$/src/othellogame/ui/languages_vi_VN.properties" />
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/src/othellogame/ui/languages_de_DE.properties" />
+      <file value="file://$PROJECT_DIR$/src/othellogame/ui/languages_en_GB.properties" />
+      <file value="file://$PROJECT_DIR$/src/othellogame/ui/languages_vi_VN.properties" />
+      <base-name>languages</base-name>
+    </custom-resource-bundle>
+  </component>
+</project>

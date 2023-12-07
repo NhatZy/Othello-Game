@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Othello game setup FXML:
+    - This FXML file defines the layout for the offline Othello game setup view.
+    - It allows players to configure their game settings, such as usernames and avatars.
+    - The layout includes background images, text elements, input fields, and arrow icons for avatar selection.
+    Author: Dinh Thuy Nhat Vy
+    Created on: 12/07/2023
+-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+
+<?import java.util.*?>
+
+<Pane fx:id="offlinePlaying" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <!--Main container for the game setup view-->
+    <children>
+        <!--Background image-->
+        <ImageView fitHeight="720.0" fitWidth="1081.0">
+            <image>
+                <Image url="@/images/Wooden_Background.jpg"/>
+            </image>
+        </ImageView>
+        <!--Home icon-->
+        <ImageView onMouseClicked="#onHomeIconClick" layoutX="50.0" layoutY="33.0" fitHeight="88.0" fitWidth="100.0" style="-fx-cursor: hand" pickOnBounds="false">
+            <image>
+                <Image url="@/images/Home_Icon.png"/>
+            </image>
+        </ImageView>
+        <!--Game instructions-->
+        <Text onMouseClicked="#onInstructionsClick" fx:id="instructions" layoutX="825.0" layoutY="80.0" fill="white" strokeType="OUTSIDE" style="-fx-stroke: black; -fx-stroke-width: 1.5; -fx-font-family: 'Comic Sans MS'; -fx-cursor: hand; -fx-font-style: italic" text="%instructions">
+            <font>
+                <Font size="26.0"/>
+            </font>
+        </Text>
+        <!--First player setup group-->
+        <Group layoutX="85.0" layoutY="185.0">
+            <children>
+                <Rectangle height="345.0" width="400.0" strokeType="OUTSIDE" strokeWidth="1.5" fill="#fafafa" stroke="#3c3c3c" arcWidth="8.0" arcHeight="8.0"/>
+                <Text layoutX="128.0" layoutY="35.0" text="%firstPlayer" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 23.5; -fx-fill: #1f701f"/>
+                <Line layoutY="52.0" strokeWidth="1.5" stroke="#555555" startX="0.0" endX="400.0"/>
+                <Text layoutX="18.0" layoutY="84.0" text="%username" style="-fx-font-family: 'Comic Sans MS'; -fx-font-size: 19.0"/>
+                <TextField fx:id="firstPlayerUsername" promptText="%inputUsername" layoutX="18.0" layoutY="98.0" prefWidth="300.0" maxWidth="360.0" style="-fx-font-family: 'Comic Sans MS'; -fx-font-size: 15.0; -fx-stroke-width: 1.5; -fx-focus-color: #3e3e96; -fx-border-color: #2a2a2a" focusTraversable="false"/>
+                <Text layoutX="18.0" layoutY="160.0" text="%botChoice" style="-fx-font-family: 'Comic Sans MS'; -fx-font-style: italic; -fx-font-size: 14.0; -fx-fill: #575757" wrappingWidth="360.0"/>
+                <Text layoutX="18.0" layoutY="212.5" text="%chooseAvatar" style="-fx-font-family: 'Comic Sans MS'; -fx-font-size: 19.0"/>
+                <ImageView fx:id="arrow0" onMouseClicked="#changeAvatar" layoutX="53.0" layoutY="246.0" fitWidth="60.0" fitHeight="60.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand">
+                    <image>
+                        <Image url="@/images/LeftArrow_Icon.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="playerAvatar0" layoutX="139.0" layoutY="221.0" fitWidth="120.0" fitHeight="120.0" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/CalmGirl_Icon.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="arrow1" onMouseClicked="#changeAvatar" layoutX="276.5" layoutY="246.0" fitWidth="60.0" fitHeight="60.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand">
+                    <image>
+                        <Image url="@/images/RightArrow_Icon.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Group>
+        <!--Second player setup group-->
+        <Group layoutX="595.0" layoutY="185.0">
+            <children>
+                <Rectangle height="345.0" width="400.0" strokeType="OUTSIDE" strokeWidth="1.5" fill="#fafafa" stroke="#3c3c3c" arcWidth="8.0" arcHeight="8.0"/>
+                <Text layoutX="121.0" layoutY="35.0" text="%secondPlayer" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 23.5; -fx-fill: #1f701f"/>
+                <Line layoutY="52.0" strokeWidth="1.5" stroke="#555555" startX="0.0" endX="400.0"/>
+                <Text layoutX="18.0" layoutY="84.0" text="%username" style="-fx-font-family: 'Comic Sans MS'; -fx-font-size: 19.0"/>
+                <TextField fx:id="secondPlayerUsername" promptText="%inputUsername" layoutX="18.0" layoutY="98.0" prefWidth="300.0" maxWidth="360.0" style="-fx-font-family: 'Comic Sans MS'; -fx-font-size: 15.0; -fx-stroke-width: 1.5; -fx-focus-color: #3e3e96; -fx-border-color: #2a2a2a" focusTraversable="false"/>
+                <Text layoutX="18.0" layoutY="160.0" text="%botChoice" style="-fx-font-family: 'Comic Sans MS'; -fx-font-style: italic; -fx-font-size: 14.0; -fx-fill: #575757" wrappingWidth="360.0"/>
+                <Text layoutX="18.0" layoutY="212.5" text="%chooseAvatar" style="-fx-font-family: 'Comic Sans MS'; -fx-font-size: 19.0"/>
+                <ImageView fx:id="arrow2" onMouseClicked="#changeAvatar" layoutX="58.0" layoutY="246.0" fitWidth="60.0" fitHeight="60.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand">
+                    <image>
+                        <Image url="@/images/LeftArrow_Icon.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="playerAvatar1" layoutX="144.0" layoutY="221.0" fitWidth="120.0" fitHeight="120.0" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/CalmGirl_Icon.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="arrow3" onMouseClicked="#changeAvatar" layoutX="281.5" layoutY="246.0" fitWidth="60.0" fitHeight="60.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand">
+                    <image>
+                        <Image url="@/images/RightArrow_Icon.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Group>
+        <!--Definition of an ArrayList to hold references to arrow icons-->
+        <fx:define>
+            <ArrayList fx:id="arrows">
+                <fx:reference source="arrow0"/>
+                <fx:reference source="arrow1"/>
+                <fx:reference source="arrow2"/>
+                <fx:reference source="arrow3"/>
+            </ArrayList>
+        </fx:define>
+        <!--Definition of an ArrayList to hold references to player avatar ImageViews-->
+        <fx:define>
+            <ArrayList fx:id="playerAvatars">
+                <fx:reference source="playerAvatar0"/>
+                <fx:reference source="playerAvatar1"/>
+            </ArrayList>
+        </fx:define>
+        <!--Button for creating a new game. Triggers the associated method when clicked-->
+        <Text onMouseClicked="#createNewGame" layoutX="467.0" layoutY="605.0" fill="#b40000" strokeType="OUTSIDE" style="-fx-stroke: white; -fx-stroke-width: 1; -fx-font-family: 'Comic Sans MS'; -fx-cursor: hand; -fx-underline: true" text="%next">
+            <font>
+                <Font size="52.0"/>
+            </font>
+        </Text>
+        <!--Group for displaying warnings to the user regarding missing username.-->
+        <Group layoutX="230.0" layoutY="81.0" fx:id="warning" visible="false">
+            <children>
+                <ImageView layoutX="6.0" fitHeight="82.0" fitWidth="90.0" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/Warning_Icon.png"/>
+                    </image>
+                    <effect>
+                        <ColorAdjust brightness="0.04"/>
+                    </effect>
+                </ImageView>
+                <Rectangle layoutX="110.0" layoutY="22.0" height="40.0" width="442.0" strokeType="OUTSIDE" strokeWidth="2.0" fill="#fafafa" stroke="#3c3c3c" arcWidth="8.0" arcHeight="8.0"/>
+                <Text text="%usernameWarnings" layoutX="120.0" layoutY="49.5" fx:id="usernameWarning" style="-fx-font-family: 'Comic Sans MS'; -fx-font-size: 21.5; -fx-fill: #b40000; -fx-font-weight: bold"/>
+            </children>
+        </Group>
+        <!--Group for sound control-->
+        <Group layoutX="92.0" layoutY="620.0" style="-fx-cursor: hand" onMouseClicked="#menuSoundControl">
+            <children>
+                <Rectangle height="60.0" width="60.0" stroke="beige" strokeWidth="2.0" fill="#d9d9d9" pickOnBounds="false"/>
+                <ImageView fx:id="soundIcon" layoutX="-6.0" layoutY="7.0" fitHeight="75.0" fitWidth="75.0" pickOnBounds="false" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/SoundOn_Icon.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Group>
+    </children>
+</Pane>

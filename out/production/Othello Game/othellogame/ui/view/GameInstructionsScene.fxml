@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Othello game instructions FXML:
+    - This FXML file defines the layout for the game instructions view in the Othello game application.
+    - It provides players with rules and instructions for playing the game.
+    - The layout includes background images, a back button, labeled rules, an image with additional instructions, and an image of a robot for visual appeal.
+    Author: Dinh Thuy Nhat Vy
+    Created on: 12/07/2023
+-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+
+<Pane fx:id="gameInstructions" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <!--Children elements within the game instructions scene-->
+    <children>
+        <!--Background image-->
+        <ImageView fitHeight="720.0" fitWidth="1081.0">
+            <image>
+                <Image url="@/images/Classroom_Background.jpg"/>
+            </image>
+            <effect>
+                <ColorAdjust brightness="-0.1"/>
+            </effect>
+        </ImageView>
+        <!--Back button-->
+        <ImageView onMouseClicked="#onBackBtnClick" style="-fx-cursor: hand" layoutX="35.0" layoutY="-2.0" fitWidth="138.0" fitHeight="138.0" preserveRatio="true" pickOnBounds="false">
+            <image>
+                <Image url="@/images/Back_Button.png"/>
+            </image>
+            <effect>
+                <ColorAdjust brightness="-0.06"/>
+            </effect>
+        </ImageView>
+        <!--Group of labels representing game rules with styling-->
+        <Group layoutX="282.0" layoutY="165.5">
+            <Label text="%firstRule" textFill="white" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 15.0" prefWidth="510.0" wrapText="true"/>
+            <Label layoutX="5.0" layoutY="42.0" text="%secondRule" textFill="white" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 15.0" prefWidth="510.0" wrapText="true"/>
+            <Label layoutX="14.0" layoutY="106.0" text="%thirdRule" textFill="white" style="-fx-font-style: italic; -fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 15.0" prefWidth="510.0" wrapText="true"/>
+            <Label layoutX="14.0" layoutY="148.0" text="%fourthRule" textFill="white" style="-fx-font-style: italic; -fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 15.0" prefWidth="510.0" wrapText="true"/>
+            <Label layoutX="5.0" layoutY="188.0" text="%fifthRule" textFill="white" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 15.0" prefWidth="510.0" wrapText="true"/>
+        </Group>
+        <!--Group with an image and a speech bubble for additional instruction-->
+        <Group layoutX="718.0" layoutY="12.0">
+            <ImageView fitHeight="170.0" fitWidth="370.0">
+                <image>
+                    <Image url="@/images/SpeechBubble_Icon.png"/>
+                </image>
+            </ImageView>
+            <Label layoutX="86.0" layoutY="18.0" text="%sixthRule" textFill="#a0025cd9" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 14.0" prefWidth="210.0" wrapText="true"/>
+        </Group>
+        <!--Image of a robot positioned in the scene-->
+        <ImageView layoutX="215.0" layoutY="375.0" fitWidth="250.0" fitHeight="230.0" preserveRatio="true">
+            <image>
+                <Image url="@/images/Robot_Icon.png"/>
+            </image>
+        </ImageView>
+    </children>
+</Pane>

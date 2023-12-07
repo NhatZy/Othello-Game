@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Othello main offline playing view FXML:
+    - This FXML file defines the layout and components for the main game screen.
+    - It includes player information, an announcement box, and the game board.
+    - The game board consists of a GridPane with individual rectangles representing cells and individual StackPane objects representing discs. Each cell can be clicked to make a move in the game.
+    Author: Dinh Thuy Nhat Vy
+    Created on: 12/07/2023
+-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+
+<Pane fx:id="mainOfflinePlaying" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: #ffffff">
+    <!--Main container for the main offline playing view-->
+    <children>
+        <!--Game instructions-->
+        <Text onMouseClicked="#onInstructionsClick" fx:id="instructions" fill="#1c16b4" layoutX="825.0" layoutY="60.0" style="-fx-underline: true; -fx-font-style: italic; -fx-font-family: 'Comic Sans MS'; -fx-cursor:hand" text="%instructions">
+            <font>
+                <Font size="22.0"/>
+            </font>
+        </Text>
+        <!--First player information section-->
+        <Group layoutX="28.0" layoutY="25.0">
+            <ImageView fx:id="firstPlayerAvatar" fitWidth="80.0" fitHeight="80.0" preserveRatio="true"/>
+            <Text fx:id="firstPlayerUsername" layoutX="94.0" layoutY="44.0" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 23.5; -fx-fill: #1f701f"/>
+        </Group>
+        <!--Second player information section-->
+        <Group layoutX="28.0" layoutY="118.5">
+            <ImageView fx:id="secondPlayerAvatar" fitWidth="80.0" fitHeight="80.0" preserveRatio="true"/>
+            <Text fx:id="secondPlayerUsername" layoutX="94.0" layoutY="46.0" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 23.5; -fx-fill: #1f701f"/>
+        </Group>
+        <!--Announcement box-->
+        <Group layoutX="55.0" layoutY="235.0" fx:id="announcementBox">
+            <Rectangle height="90.0" width="342.0" strokeType="OUTSIDE" strokeWidth="1.5" fill="#e2cdf5" stroke="#5b009b"/>
+            <ImageView layoutX="20.0" layoutY="12.0" fitHeight="64.0" fitWidth="57.0">
+                <image>
+                    <Image url="@/images/Announcement_Icon.png"/>
+                </image>
+            </ImageView>
+            <Text layoutX="94.0" layoutY="50.5" text="%announcements" style="-fx-font-family: 'Comic Sans MS'; -fx-font-size: 24.5; -fx-font-style: italic; -fx-fill: #491575"/>
+            <ImageView rotate="-2.5" layoutX="280.0" layoutY="-22.0" fitWidth="140.0" fitHeight="78.0" preserveRatio="true">
+                <image>
+                    <Image url="@/images/Tape_Icon.png"/>
+                </image>
+            </ImageView>
+            <TextArea fx:id="announcement" layoutX="-1.0" layoutY="91.1" maxHeight="-Infinity" prefHeight="230.0" prefWidth="344.0" style="-fx-font-family: 'Comic Sans MS'; -fx-stroke-type: OUTSIDE; -fx-stroke-width: 1.5; -fx-border-color: #5b009b; -fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-font-size: 14.0"/>
+        </Group>
+        <!--Game board-->
+        <GridPane fx:id="board" layoutX="480.0" layoutY="105.0" style="-fx-border-color: black; -fx-border-width: 1.5">
+            <children>
+                <fx:define>
+                    <Double fx:id="cellSize" fx:value="60.0"/>
+                    <Double fx:id="discRadius" fx:value="24.5"/>
+                </fx:define>
+                <Rectangle fx:id="grid0" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <StackPane fx:id="stackPane0"/>
+                <Rectangle fx:id="grid1" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <StackPane fx:id="stackPane1"/>
+                <Rectangle fx:id="grid2" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <StackPane fx:id="stackPane2"/>
+                <Rectangle fx:id="grid3" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                <StackPane fx:id="stackPane3"/>
+                <Rectangle fx:id="grid4" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+                <StackPane fx:id="stackPane4"/>
+                <Rectangle fx:id="grid5" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="0" GridPane.columnIndex="5"/>
+                <StackPane fx:id="stackPane5"/>
+                <Rectangle fx:id="grid6" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="0" GridPane.columnIndex="6"/>
+                <StackPane fx:id="stackPane6"/>
+                <Rectangle fx:id="grid7" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="0" GridPane.columnIndex="7"/>
+                <StackPane fx:id="stackPane7"/>
+                <Rectangle fx:id="grid8" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <StackPane fx:id="stackPane8"/>
+                <Rectangle fx:id="grid9" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <StackPane fx:id="stackPane9"/>
+                <Rectangle fx:id="grid10" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <StackPane fx:id="stackPane10"/>
+                <Rectangle fx:id="grid11" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                <StackPane fx:id="stackPane11"/>
+                <Rectangle fx:id="grid12" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="1" GridPane.columnIndex="4"/>
+                <StackPane fx:id="stackPane12"/>
+                <Rectangle fx:id="grid13" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="1" GridPane.columnIndex="5"/>
+                <StackPane fx:id="stackPane13"/>
+                <Rectangle fx:id="grid14" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="1" GridPane.columnIndex="6"/>
+                <StackPane fx:id="stackPane14"/>
+                <Rectangle fx:id="grid15" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="1" GridPane.columnIndex="7"/>
+                <StackPane fx:id="stackPane15"/>
+                <Rectangle fx:id="grid16" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <StackPane fx:id="stackPane16"/>
+                <Rectangle fx:id="grid17" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <StackPane fx:id="stackPane17"/>
+                <Rectangle fx:id="grid18" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                <StackPane fx:id="stackPane18"/>
+                <Rectangle fx:id="grid19" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+                <StackPane fx:id="stackPane19"/>
+                <Rectangle fx:id="grid20" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="2" GridPane.columnIndex="4"/>
+                <StackPane fx:id="stackPane20"/>
+                <Rectangle fx:id="grid21" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="2" GridPane.columnIndex="5"/>
+                <StackPane fx:id="stackPane21"/>
+                <Rectangle fx:id="grid22" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="2" GridPane.columnIndex="6"/>
+                <StackPane fx:id="stackPane22"/>
+                <Rectangle fx:id="grid23" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="2" GridPane.columnIndex="7"/>
+                <StackPane fx:id="stackPane23"/>
+                <Rectangle fx:id="grid24" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <StackPane fx:id="stackPane24"/>
+                <Rectangle fx:id="grid25" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <StackPane fx:id="stackPane25"/>
+                <Rectangle fx:id="grid26" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                <StackPane fx:id="stackPane26"/>
+                <Rectangle fx:id="grid27" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+                <StackPane fx:id="stackPane27" GridPane.rowIndex="3" GridPane.columnIndex="3">
+                    <children>
+                        <Circle stroke="white" strokeWidth="2.5" radius="${discRadius}" fill="linear-gradient(to top right, #8c8c8c, #a0a1a0, #b5b5b5, #c9cac9, #dedede, #f2f3f2)">
+                            <effect>
+                                <DropShadow radius="5.0" color="#1f1f1f" offsetX="3" offsetY="3"/>
+                            </effect>
+                        </Circle>
+                    </children>
+                </StackPane>
+                <Rectangle fx:id="grid28" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="3" GridPane.columnIndex="4"/>
+                <StackPane fx:id="stackPane28" GridPane.rowIndex="3" GridPane.columnIndex="4">
+                    <children>
+                        <Circle stroke="black" strokeWidth="2.5" radius="${discRadius}" fill="linear-gradient(to top right, #000000, #111111, #222222, #333333, #444444, #555555)">
+                            <effect>
+                                <DropShadow radius="5.0" color="#1f1f1f80" offsetX="3" offsetY="3"/>
+                            </effect>
+                        </Circle>
+                    </children>
+                </StackPane>
+                <Rectangle fx:id="grid29" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="3" GridPane.columnIndex="5"/>
+                <StackPane fx:id="stackPane29"/>
+                <Rectangle fx:id="grid30" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="3" GridPane.columnIndex="6"/>
+                <StackPane fx:id="stackPane30"/>
+                <Rectangle fx:id="grid31" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="3" GridPane.columnIndex="7"/>
+                <StackPane fx:id="stackPane31"/>
+                <Rectangle fx:id="grid32" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <StackPane fx:id="stackPane32"/>
+                <Rectangle fx:id="grid33" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <StackPane fx:id="stackPane33"/>
+                <Rectangle fx:id="grid34" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+                <StackPane fx:id="stackPane34"/>
+                <Rectangle fx:id="grid35" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+                <StackPane fx:id="stackPane35" GridPane.rowIndex="4" GridPane.columnIndex="3">
+                    <children>
+                        <Circle stroke="black" strokeWidth="2.5" radius="${discRadius}" fill="linear-gradient(to top right, #000000, #111111, #222222, #333333, #444444, #555555)">
+                            <effect>
+                                <DropShadow radius="5.0" color="#1f1f1f80" offsetX="3" offsetY="3"/>
+                            </effect>
+                        </Circle>
+                    </children>
+                </StackPane>
+                <Rectangle fx:id="grid36" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="4" GridPane.columnIndex="4"/>
+                <StackPane fx:id="stackPane36" GridPane.rowIndex="4" GridPane.columnIndex="4">
+                    <children>
+                        <Circle stroke="white" strokeWidth="2.5" radius="${discRadius}" fill="linear-gradient(to top right, #8c8c8c, #a0a1a0, #b5b5b5, #c9cac9, #dedede, #f2f3f2)">
+                            <effect>
+                                <DropShadow radius="5.0" color="#1f1f1f" offsetX="3" offsetY="3"/>
+                            </effect>
+                        </Circle>
+                    </children>
+                </StackPane>
+                <Rectangle fx:id="grid37" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="4" GridPane.columnIndex="5"/>
+                <StackPane fx:id="stackPane37"/>
+                <Rectangle fx:id="grid38" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="4" GridPane.columnIndex="6"/>
+                <StackPane fx:id="stackPane38"/>
+                <Rectangle fx:id="grid39" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="4" GridPane.columnIndex="7"/>
+                <StackPane fx:id="stackPane39"/>
+                <Rectangle fx:id="grid40" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <StackPane fx:id="stackPane40"/>
+                <Rectangle fx:id="grid41" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                <StackPane fx:id="stackPane41"/>
+                <Rectangle fx:id="grid42" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+                <StackPane fx:id="stackPane42"/>
+                <Rectangle fx:id="grid43" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="5" GridPane.columnIndex="3"/>
+                <StackPane fx:id="stackPane43"/>
+                <Rectangle fx:id="grid44" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="5" GridPane.columnIndex="4"/>
+                <StackPane fx:id="stackPane44"/>
+                <Rectangle fx:id="grid45" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="5" GridPane.columnIndex="5"/>
+                <StackPane fx:id="stackPane45"/>
+                <Rectangle fx:id="grid46" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="5" GridPane.columnIndex="6"/>
+                <StackPane fx:id="stackPane46"/>
+                <Rectangle fx:id="grid47" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="5" GridPane.columnIndex="7"/>
+                <StackPane fx:id="stackPane47"/>
+                <Rectangle fx:id="grid48" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <StackPane fx:id="stackPane48"/>
+                <Rectangle fx:id="grid49" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                <StackPane fx:id="stackPane49"/>
+                <Rectangle fx:id="grid50" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+                <StackPane fx:id="stackPane50"/>
+                <Rectangle fx:id="grid51" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="6" GridPane.columnIndex="3"/>
+                <StackPane fx:id="stackPane51"/>
+                <Rectangle fx:id="grid52" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="6" GridPane.columnIndex="4"/>
+                <StackPane fx:id="stackPane52"/>
+                <Rectangle fx:id="grid53" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="6" GridPane.columnIndex="5"/>
+                <StackPane fx:id="stackPane53"/>
+                <Rectangle fx:id="grid54" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="6" GridPane.columnIndex="6"/>
+                <StackPane fx:id="stackPane54"/>
+                <Rectangle fx:id="grid55" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="6" GridPane.columnIndex="7"/>
+                <StackPane fx:id="stackPane55"/>
+                <Rectangle fx:id="grid56" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                <StackPane fx:id="stackPane56"/>
+                <Rectangle fx:id="grid57" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                <StackPane fx:id="stackPane57"/>
+                <Rectangle fx:id="grid58" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="7" GridPane.columnIndex="2"/>
+                <StackPane fx:id="stackPane58"/>
+                <Rectangle fx:id="grid59" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="7" GridPane.columnIndex="3"/>
+                <StackPane fx:id="stackPane59"/>
+                <Rectangle fx:id="grid60" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="7" GridPane.columnIndex="4"/>
+                <StackPane fx:id="stackPane60"/>
+                <Rectangle fx:id="grid61" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="7" GridPane.columnIndex="5"/>
+                <StackPane fx:id="stackPane61"/>
+                <Rectangle fx:id="grid62" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="7" GridPane.columnIndex="6"/>
+                <StackPane fx:id="stackPane62"/>
+                <Rectangle fx:id="grid63" onMouseClicked="#handleMove" style="-fx-cursor: hand" width="${cellSize}" height="${cellSize}" fill="#229322" stroke="black" strokeWidth="1.5" GridPane.rowIndex="7" GridPane.columnIndex="7"/>
+                <StackPane fx:id="stackPane63"/>
+            </children>
+        </GridPane>
+        <!--Definition of ArrayLists for grids-->
+        <fx:define>
+            <ArrayList fx:id="grids">
+                <!--Reference to individual grid elements-->
+                <fx:reference source="grid0"/>
+                <fx:reference source="grid1"/>
+                <fx:reference source="grid2"/>
+                <fx:reference source="grid3"/>
+                <fx:reference source="grid4"/>
+                <fx:reference source="grid5"/>
+                <fx:reference source="grid6"/>
+                <fx:reference source="grid7"/>
+                <fx:reference source="grid8"/>
+                <fx:reference source="grid9"/>
+                <fx:reference source="grid10"/>
+                <fx:reference source="grid11"/>
+                <fx:reference source="grid12"/>
+                <fx:reference source="grid13"/>
+                <fx:reference source="grid14"/>
+                <fx:reference source="grid15"/>
+                <fx:reference source="grid16"/>
+                <fx:reference source="grid17"/>
+                <fx:reference source="grid18"/>
+                <fx:reference source="grid19"/>
+                <fx:reference source="grid20"/>
+                <fx:reference source="grid21"/>
+                <fx:reference source="grid22"/>
+                <fx:reference source="grid23"/>
+                <fx:reference source="grid24"/>
+                <fx:reference source="grid25"/>
+                <fx:reference source="grid26"/>
+                <fx:reference source="grid27"/>
+                <fx:reference source="grid28"/>
+                <fx:reference source="grid29"/>
+                <fx:reference source="grid30"/>
+                <fx:reference source="grid31"/>
+                <fx:reference source="grid32"/>
+                <fx:reference source="grid33"/>
+                <fx:reference source="grid34"/>
+                <fx:reference source="grid35"/>
+                <fx:reference source="grid36"/>
+                <fx:reference source="grid37"/>
+                <fx:reference source="grid38"/>
+                <fx:reference source="grid39"/>
+                <fx:reference source="grid40"/>
+                <fx:reference source="grid41"/>
+                <fx:reference source="grid42"/>
+                <fx:reference source="grid43"/>
+                <fx:reference source="grid44"/>
+                <fx:reference source="grid45"/>
+                <fx:reference source="grid46"/>
+                <fx:reference source="grid47"/>
+                <fx:reference source="grid48"/>
+                <fx:reference source="grid49"/>
+                <fx:reference source="grid50"/>
+                <fx:reference source="grid51"/>
+                <fx:reference source="grid52"/>
+                <fx:reference source="grid53"/>
+                <fx:reference source="grid54"/>
+                <fx:reference source="grid55"/>
+                <fx:reference source="grid56"/>
+                <fx:reference source="grid57"/>
+                <fx:reference source="grid58"/>
+                <fx:reference source="grid59"/>
+                <fx:reference source="grid60"/>
+                <fx:reference source="grid61"/>
+                <fx:reference source="grid62"/>
+                <fx:reference source="grid63"/>
+            </ArrayList>
+        </fx:define>
+        <!--Definition of ArrayLists for stackPanes-->
+        <fx:define>
+            <ArrayList fx:id="stackPanes">
+                <!--Reference to individual stackPane elements-->
+                <fx:reference source="stackPane0"/>
+                <fx:reference source="stackPane1"/>
+                <fx:reference source="stackPane2"/>
+                <fx:reference source="stackPane3"/>
+                <fx:reference source="stackPane4"/>
+                <fx:reference source="stackPane5"/>
+                <fx:reference source="stackPane6"/>
+                <fx:reference source="stackPane7"/>
+                <fx:reference source="stackPane8"/>
+                <fx:reference source="stackPane9"/>
+                <fx:reference source="stackPane10"/>
+                <fx:reference source="stackPane11"/>
+                <fx:reference source="stackPane12"/>
+                <fx:reference source="stackPane13"/>
+                <fx:reference source="stackPane14"/>
+                <fx:reference source="stackPane15"/>
+                <fx:reference source="stackPane16"/>
+                <fx:reference source="stackPane17"/>
+                <fx:reference source="stackPane18"/>
+                <fx:reference source="stackPane19"/>
+                <fx:reference source="stackPane20"/>
+                <fx:reference source="stackPane21"/>
+                <fx:reference source="stackPane22"/>
+                <fx:reference source="stackPane23"/>
+                <fx:reference source="stackPane24"/>
+                <fx:reference source="stackPane25"/>
+                <fx:reference source="stackPane26"/>
+                <fx:reference source="stackPane27"/>
+                <fx:reference source="stackPane28"/>
+                <fx:reference source="stackPane29"/>
+                <fx:reference source="stackPane30"/>
+                <fx:reference source="stackPane31"/>
+                <fx:reference source="stackPane32"/>
+                <fx:reference source="stackPane33"/>
+                <fx:reference source="stackPane34"/>
+                <fx:reference source="stackPane35"/>
+                <fx:reference source="stackPane36"/>
+                <fx:reference source="stackPane37"/>
+                <fx:reference source="stackPane38"/>
+                <fx:reference source="stackPane39"/>
+                <fx:reference source="stackPane40"/>
+                <fx:reference source="stackPane41"/>
+                <fx:reference source="stackPane42"/>
+                <fx:reference source="stackPane43"/>
+                <fx:reference source="stackPane44"/>
+                <fx:reference source="stackPane45"/>
+                <fx:reference source="stackPane46"/>
+                <fx:reference source="stackPane47"/>
+                <fx:reference source="stackPane48"/>
+                <fx:reference source="stackPane49"/>
+                <fx:reference source="stackPane50"/>
+                <fx:reference source="stackPane51"/>
+                <fx:reference source="stackPane52"/>
+                <fx:reference source="stackPane53"/>
+                <fx:reference source="stackPane54"/>
+                <fx:reference source="stackPane55"/>
+                <fx:reference source="stackPane56"/>
+                <fx:reference source="stackPane57"/>
+                <fx:reference source="stackPane58"/>
+                <fx:reference source="stackPane59"/>
+                <fx:reference source="stackPane60"/>
+                <fx:reference source="stackPane61"/>
+                <fx:reference source="stackPane62"/>
+                <fx:reference source="stackPane63"/>
+            </ArrayList>
+        </fx:define>
+        <!--Sound control group-->
+        <Group layoutX="210.0" layoutY="598.0" style="-fx-cursor: hand" onMouseClicked="#gameSoundControl">
+            <children>
+                <Rectangle height="60.0" width="60.0" stroke="#3c3c3c" strokeWidth="1.0" fill="white"/>
+                <ImageView fx:id="soundIcon" layoutX="-6.0" layoutY="7.0" fitHeight="75.0" fitWidth="75.0" pickOnBounds="false" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/SoundOn_Icon.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Group>
+        <!--Quit button group-->
+        <Group layoutX="278.0" layoutY="615.0" style="-fx-cursor: hand" onMouseClicked="#onQuitClick">
+            <children>
+                <Rectangle height="30.0" width="100.0" fill="#2c802c"/>
+                <Text layoutX="7.0" layoutY="22.0" text="%quit" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 18.0; -fx-fill: white"/>
+            </children>
+        </Group>
+        <!--Leave match confirmation dialog-->
+        <Group layoutX="286.0" layoutY="250.0" fx:id="leaveMatchQuestion" visible="false">
+            <Rectangle height="185.0" width="520.0" strokeType="OUTSIDE" strokeWidth="1.5" fill="#fafafa" stroke="#555555"/>
+            <Text layoutX="10.0" layoutY="35.0" text="%leaveMatch" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 26.0; -fx-fill: #b40000"/>
+            <ImageView layoutX="460.0" layoutY="6.0" fitHeight="40.0" fitWidth="55.0" style="-fx-cursor: hand" pickOnBounds="false" onMouseClicked="#onCloseIconClick">
+                <image>
+                    <Image url="@/images/Close_Icon.png"/>
+                </image>
+            </ImageView>
+            <Line layoutY="52.0" strokeWidth="1.5" stroke="#555555" startX="0.0" endX="520.0"/>
+            <Label textAlignment="CENTER" layoutX="102.0" layoutY="59.0" text="%leaveMatchQuestion" style="-fx-font-family: 'Comic Sans MS'; -fx-font-style: italic; -fx-font-size: 22.0" prefWidth="300.0" wrapText="true"/>
+            <HBox spacing="108.0">
+                <padding>
+                    <Insets left="128.0" top="136.0"/>
+                </padding>
+                <Button onMouseClicked="#onYesBtnClick" prefHeight="30.0" prefWidth="70.0" mnemonicParsing="false" text="%yes" textFill="white" style="-fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-cursor: hand; -fx-font-size: 16.0; -fx-background-color: #b40000; -fx-stroke: #8f0000; -fx-stroke-width: 1.0" focusTraversable="false"/>
+                <Button onMouseClicked="#onCloseIconClick" prefHeight="30.0" prefWidth="70.0" mnemonicParsing="false" text="%no" textFill="white" style="-fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-cursor: hand; -fx-font-size: 16.0; -fx-background-color: #b40000; -fx-stroke: #8f0000; -fx-stroke-width: 1.0" focusTraversable="false"/>
+            </HBox>
+        </Group>
+        <!--Bottom rectangle-->
+        <Rectangle layoutY="680.0" width="1080.0" height="40.0" fill="#7b5126"/>
+        <!--Flower icon-->
+        <ImageView layoutX="20.0" layoutY="590.0" preserveRatio="true" fitHeight="120.0" fitWidth="140.0">
+            <image>
+                <Image url="@/images/Flower_Icon.png"/>
+            </image>
+        </ImageView>
+        <!--Bee icon-->
+        <ImageView layoutX="105.0" layoutY="560.0" preserveRatio="true" fitWidth="80.0" fitHeight="80.0">
+            <image>
+                <Image url="@/images/Bee_Icon.png"/>
+            </image>
+        </ImageView>
+        <!--Flower vine icon-->
+        <ImageView layoutY="470.0" layoutX="952.0" preserveRatio="true" fitWidth="150.0">
+            <image>
+                <Image url="@/images/FlowerVine_Icon.png"/>
+            </image>
+        </ImageView>
+    </children>
+</Pane>

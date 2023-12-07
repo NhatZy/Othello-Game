@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Othello main menu FXML:
+    - This FXML file defines the layout for the main menu in the Othello game application.
+    - It provides options for language selection, game instructions, starting a new game, and exiting the application.
+    - The layout includes background images, buttons, and other UI elements with associated actions.
+    Author: Dinh Thuy Nhat Vy
+    Created on: 12/07/2023
+-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+
+<Pane fx:id="menu" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <!--Children elements within the menu scene-->
+    <children>
+        <!--Background image-->
+        <ImageView fitHeight="720.0" fitWidth="1081.0">
+            <image>
+                <Image url="@/images/Wooden_Background.jpg"/>
+            </image>
+        </ImageView>
+        <!--Medal icon-->
+        <ImageView layoutX="37.0" layoutY="33.0" fitHeight="105.0" fitWidth="110.0">
+            <image>
+                <Image url="@/images/MaroonMedal_Icon.png"/>
+            </image>
+        </ImageView>
+        <!--Game title-->
+        <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="white" layoutX="323.0" layoutY="150.0" strokeType="OUTSIDE" style="-fx-stroke-width: 2; -fx-stroke: black; -fx-font-smoothing-type: gray; -fx-underline: true; -fx-font-family: 'MV Boli'; -fx-font-weight: bold" text="%gameTitle" textAlignment="CENTER" wrappingWidth="477.5">
+            <font>
+                <Font size="48.0"/>
+            </font>
+        </Text>
+        <!--Language options-->
+        <VBox fx:id="languageOptions" alignment="CENTER" layoutX="838.0" layoutY="22.0" prefHeight="60.0" prefWidth="226.0" spacing="10.0">
+            <children>
+                <Text fill="#35bbfe" strokeType="OUTSIDE" style="-fx-stroke: #3e3e96; -fx-stroke-width: 1; -fx-font-style: italic; -fx-font-family: 'Comic Sans MS'" text="%language">
+                    <font>
+                        <Font size="26.0"/>
+                    </font>
+                </Text>
+                <HBox spacing="15.0">
+                    <padding>
+                        <Insets left="48.5"/>
+                    </padding>
+                    <Button mnemonicParsing="false" onMouseClicked="#changeLanguageToDE" text="DE" style="-fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-cursor: hand" focusTraversable="false"/>
+                    <Button mnemonicParsing="false" onMouseClicked="#changeLanguageToEN" text="EN" style="-fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-cursor: hand" focusTraversable="false"/>
+                    <Button mnemonicParsing="false" onMouseClicked="#changeLanguageToVI" text="VI" style="-fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-cursor: hand" focusTraversable="false"/>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="18.0" bottom="15.0"/>
+            </padding>
+        </VBox>
+        <!--Game instructions-->
+        <Text fx:id="instructions" onMouseClicked="#onInstructionsClick" layoutX="57.0" layoutY="380.0" fill="white" strokeType="OUTSIDE" style="-fx-stroke: black; -fx-stroke-width: 1.5; -fx-font-family: 'Comic Sans MS'; -fx-cursor: hand" text="%instructions">
+            <font>
+                <Font size="34.0"/>
+            </font>
+        </Text>
+        <!--Othello board image-->
+        <ImageView fx:id="board" layoutX="330.0" layoutY="155.0">
+            <image>
+                <Image url="@/images/Othello_Board.png"/>
+            </image>
+        </ImageView>
+        <!--Play game button-->
+        <Text fx:id="play" onMouseClicked="#playGame" layoutX="779.0" layoutY="380.0" fill="#b40000" strokeType="OUTSIDE" style="-fx-stroke: white; -fx-stroke-width: 1; -fx-font-family: 'Kristen ITC'; -fx-cursor: hand" text="%play">
+            <font>
+                <Font size="52.0"/>
+            </font>
+        </Text>
+        <!--Sound control-->
+        <Group layoutX="92.0" layoutY="620.0" style="-fx-cursor: hand" onMouseClicked="#menuSoundControl">
+            <children>
+                <Rectangle height="60.0" width="60.0" stroke="beige" strokeWidth="2.0" fill="#d9d9d9" pickOnBounds="false"/>
+                <ImageView fx:id="soundIcon" layoutX="-6.0" layoutY="7.0" fitHeight="75.0" fitWidth="75.0" pickOnBounds="false" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/SoundOn_Icon.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Group>
+        <!--Shutdown icon-->
+        <ImageView onMouseClicked="#onShutDownIconClick" fitHeight="50.0" fitWidth="50.0" layoutX="940.0" layoutY="625.0" pickOnBounds="true" style="-fx-cursor: hand">
+            <image>
+                <Image url="@/images/ShutDown_Icon.png"/>
+            </image>
+        </ImageView>
+        <!--Exit application confirmation dialog-->
+        <Group fx:id="exitGameQuestion" layoutX="310.0" layoutY="250.0" visible="false">
+            <Rectangle height="185.0" width="520.0" strokeType="OUTSIDE" strokeWidth="1.5" fill="#fafafa" stroke="#555555"/>
+            <Text layoutX="10.0" layoutY="35.0" text="%exitGame" style="-fx-font-family: 'Comic Sans MS'; -fx-font-weight: bold; -fx-font-size: 26.0; -fx-fill: #1d6c1d"/>
+            <ImageView layoutX="460.0" layoutY="6.0" fitHeight="40.0" fitWidth="55.0" style="-fx-cursor: hand" pickOnBounds="false" onMouseClicked="#onCloseIconClick">
+                <image>
+                    <Image url="@/images/Close_Icon.png"/>
+                </image>
+            </ImageView>
+            <Line layoutY="52.0" strokeWidth="1.5" stroke="#555555" startX="0.0" endX="520.0"/>
+            <Label textAlignment="CENTER" layoutX="102.0" layoutY="59.0" text="%exitGameQuestion" style="-fx-font-family: 'Comic Sans MS'; -fx-font-style: italic; -fx-font-size: 22.0" prefWidth="300.0" wrapText="true"/>
+            <HBox spacing="108.0">
+                <padding>
+                    <Insets left="128.0" top="136.0"/>
+                </padding>
+                <Button onMouseClicked="#shutDown" prefHeight="30.0" prefWidth="70.0" mnemonicParsing="false" text="%yes" textFill="white" style="-fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-cursor: hand; -fx-font-size: 16.0; -fx-background-color: #2c802c; -fx-stroke: #185618; -fx-stroke-width: 1.0" focusTraversable="false"/>
+                <Button onMouseClicked="#onCloseIconClick" prefHeight="30.0" prefWidth="70.0" mnemonicParsing="false" text="%no" textFill="white" style="-fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-cursor: hand; -fx-font-size: 16.0; -fx-background-color: #2c802c; -fx-stroke: #185618; -fx-stroke-width: 1.0" focusTraversable="false"/>
+            </HBox>
+        </Group>
+    </children>
+</Pane>
