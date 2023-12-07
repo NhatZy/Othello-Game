@@ -223,4 +223,4 @@ For the GUI design, I express my gratitude to the following resources for provid
 [3]: [Exit Sound](https://www.youtube.com/watch?v=ZaezHNLyogQ).
 
 ## **VI. LICENSE**
-This project is licensed under the [MIT License](https://github.com/NhatZy/Othello-Game/blob/main/LICENSE).
+This project is licensed under the [MIT License](https://github.com/NhatZy/Othello-Game/blob/master/LICENSE.txt).
